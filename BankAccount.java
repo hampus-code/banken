@@ -1,18 +1,15 @@
 public class BankAccount {
 
-    protected int accountNumber;
-    protected double balance;
+     int accountNumber;
+     double balance;
 
-    public BankAccount (int accountNumber, double balance){
+    public BankAccount (int accountNumber){
 
         this.accountNumber = accountNumber;
-        this.balance = balance;
+        //this.balance = balance;
 
     }
 
-    public void  MenuAccount(){
-        
-    }
 
     public void depositMoney(double amount){
 

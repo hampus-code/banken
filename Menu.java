@@ -2,9 +2,10 @@ import java.util.Scanner;
 
 public class Menu {
 
+    Register bankAccount = new Register();
     Scanner scanner = new Scanner(System.in);
-    private boolean runTheMenu = true;
-    private int choice;
+    boolean runTheMenu = true;
+    int userChoice;
 
     public Menu(){
 
@@ -20,13 +21,31 @@ public class Menu {
             System.out.println("1. Skapa konto");
             System.out.println("2. Administrera konto");
             System.out.println("3. Avsluta");
-            choice = scanner.nextInt();
+            userChoice = scanner.nextInt();
 
-            if(choice == 3){
+            switch (userChoice) {
+
+                case 1:
+
+                bankAccount.createAccount();
+                break;
+            
+                case 2:
+
+
+                break;
+
+                case 3:
+
                 System.out.println("Programmet avslutas");
                 runTheMenu = false;
-            }
+                break;
 
+                default:
+
+                System.out.println("Ditt val finns inte, du skickas tillbaka till menyn igen.");
+                break;
+            }
 
 
         }while (runTheMenu);
