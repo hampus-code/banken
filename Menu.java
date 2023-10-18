@@ -2,7 +2,8 @@ import java.util.Scanner;
 
 public class Menu {
 
-    Register bankAccount = new Register();
+    RegisterAccount bankAccount = new RegisterAccount();
+    //AdministrateAccount adminAccount = new AdministrateAccount();
     Scanner scanner = new Scanner(System.in);
     boolean runTheMenu = true;
     int userChoice;
@@ -32,7 +33,7 @@ public class Menu {
             
                 case 2:
 
-
+                bankAccount.administrateAccount();
                 break;
 
                 case 3:
