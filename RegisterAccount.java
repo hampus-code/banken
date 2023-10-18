@@ -3,95 +3,103 @@ import java.util.Scanner;
 
 public class RegisterAccount {
 
-    BankAccount adminAccount = new BankAccount(0);
     int accountNumber;
     int checkUserInputAccountNumber;
-    boolean accountExists = false;
-    boolean runSecondMenu = true;
+    boolean accountExists;
+    boolean runSecondMenu;
     Scanner scanner = new Scanner(System.in);
 
 
     ArrayList<BankAccount> accountList = new ArrayList<>();
     
 
-
+    //Metod för att skapa konton
     public void createAccount(){
 
-
+        
         System.out.print("Ange kontonummer: ");
         int userInputAccountNumber = scanner.nextInt();
 
+        accountExists = false;
         
-         for (BankAccount checkAccounts : accountList) { //Denna funkar just nu inte som den ska, kan fortfarande skapa konto även om det finns
-            if (checkUserInputAccountNumber == checkAccounts.getAccountNumber()) {
+         for (BankAccount checkAccount : accountList) { // Går igenom konton i listan
+            if (userInputAccountNumber == checkAccount.getAccountNumber()) {
                 accountExists = true;
                 break;
                 
             }
             
          }
+         //Ifall kontot inte finns så skapas det
          if (!accountExists){
+            accountList.add(new BankAccount(userInputAccountNumber, 0));
             System.out.println("Kontot skapades");
-            accountExists = true;
+            accountExists = false;
          }
-         else if(accountExists){
-            accountList.add(new BankAccount(userInputAccountNumber));
+         //Finns kontot redan så visas ett felmeddelande
+            else{
             System.out.println("Kontot existerar redan");
             accountExists = false;
          }
-
-            
+         
+     
         
     }
-
+    //Metod för att administrera konton
     public void administrateAccount(){
 
-        System.out.println("Ange kontonummer: ");
+        System.out.print("Ange kontonummer: ");
         checkUserInputAccountNumber = scanner.nextInt();
+
+        runSecondMenu = true;
+        accountExists = false;
         
 
-         for (BankAccount checkAccounts : accountList) {
-            if (checkUserInputAccountNumber == checkAccounts.getAccountNumber()) {
+         for (BankAccount checkAccount : accountList) { // Går igenom konton i listan
+            if (checkUserInputAccountNumber == checkAccount.getAccountNumber()) {
                 System.out.println("Kontot du har angett existerar, du får följande val: ");
                 accountExists = true;
 
-                do{ //Menyn funkar inte som den ska än, testa att lägga hela AdministrateAccount i en ny fil/klass.
+                do{ //Meny för konto
                     System.out.println("****KONTOMENY**** - konto: " + checkUserInputAccountNumber);
                     System.out.println("1. Ta ut pengar");
                     System.out.println("2. Sätt in pengar");
                     System.out.println("3. Visa saldo");
                     System.out.println("4. Avsluta");
+                    System.out.print("Ange menyval: ");
                     int secondMenuChoice = scanner.nextInt();
         
                     switch (secondMenuChoice) {
         
-                        case 1:
-                        System.out.println("Ange hur mycket du vill ta ut: ");
+                        case 1: //Kallar på metod för att ta ut pengar
+
+                        System.out.print("Ange hur mycket du vill ta ut: ");
                         int userInputWithdraw = scanner.nextInt();
-                        adminAccount.withdrawMoney(userInputWithdraw);
+                        checkAccount.withdrawMoney(userInputWithdraw);
                         break;
                     
-                        case 2:
-                        System.out.println("Ange hur mycket du vill sätta in: ");
+                        case 2: //Kallar på metod för att sätta in pengar
+
+                        System.out.print("Ange hur mycket du vill sätta in: ");
                         int userInputDeposit = scanner.nextInt();
-                        adminAccount.depositMoney(userInputDeposit);
+                        checkAccount.depositMoney(userInputDeposit);
                         break;
 
                         case 3:
 
-                        adminAccount.displayAccountInfo();
+                        checkAccount.displayAccountInfo(); //Kallar på metod för att visa saldo
                         break;
         
                         case 4:
         
-                        System.out.println("Menyn avslutas, du skickas tillbaka till huvudmenyn.");
-                        runSecondMenu = false;
+                        System.out.println("Kontomenyn avslutas, du skickas tillbaka till huvudmenyn.");
+                        runSecondMenu = false; //Avslutar menyn
                         break;
         
                         default:
         
-                        System.out.println("Ditt val finns inte, du skickas tillbaka till menyn igen.");
-                        break;
+                        System.out.println("Ditt val finns inte, du skickas tillbaka till kontomenyn igen.");
+                        break; //Om användaren anger nåt som inte finns som menyval så visas ett felmeddelande
                     }
         
         
@@ -99,7 +107,7 @@ public class RegisterAccount {
             }
             
          }
-         if (!accountExists)
+         if (!accountExists) //Om kontot inte finns så kommer man tillbaka till kontomenyn igen
             System.out.println("Konto existerar inte, försök igen");
 
     }

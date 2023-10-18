@@ -7,21 +7,22 @@ public class BankAccount {
 
      Scanner scanner = new Scanner(System.in);
 
-    public BankAccount (int accountNumber){
+    public BankAccount (int accountNumber, double balance){
 
         this.accountNumber = accountNumber;
+        this.balance = balance;
 
     }
 
 
-    public void depositMoney(double amount){
+    public void depositMoney(double amount){ //Metod för att sätta in pengar
 
         setBalance(getBalance() + amount);
         System.out.println("Insättning lyckades, nuvarande saldo är: " + getBalance());
 
     }
 
-    public void withdrawMoney(double amount){
+    public void withdrawMoney(double amount){ //Metod för att ta ut pengar
 
         if (getBalance() >= amount) {
             setBalance(getBalance() - amount);
@@ -32,7 +33,7 @@ public class BankAccount {
 
     }
 
-    public void displayAccountInfo(){
+    public void displayAccountInfo(){ //Metod för att visa saldo
 
         System.out.println("Nuvarande saldo: " + balance);
 

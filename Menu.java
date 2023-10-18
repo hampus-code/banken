@@ -3,10 +3,9 @@ import java.util.Scanner;
 public class Menu {
 
     RegisterAccount bankAccount = new RegisterAccount();
-    //AdministrateAccount adminAccount = new AdministrateAccount();
     Scanner scanner = new Scanner(System.in);
     boolean runTheMenu = true;
-    int userChoice;
+    int menuChoice;
 
     public Menu(){
 
@@ -22,9 +21,10 @@ public class Menu {
             System.out.println("1. Skapa konto");
             System.out.println("2. Administrera konto");
             System.out.println("3. Avsluta");
-            userChoice = scanner.nextInt();
+            System.out.print("Ange menyval: ");
+            menuChoice = scanner.nextInt();
 
-            switch (userChoice) {
+            switch (menuChoice) {
 
                 case 1:
 
