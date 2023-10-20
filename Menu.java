@@ -2,10 +2,11 @@ import java.util.Scanner;
 
 public class Menu {
 
-    RegisterAccount bankAccount = new RegisterAccount();
-    Scanner scanner = new Scanner(System.in);
-    boolean runTheMenu = true;
-    int menuChoice;
+    private boolean runTheMenu = true;
+    private int menuChoice;
+
+    private RegisterAccount bankAccount = new RegisterAccount();
+    private Scanner scanner = new Scanner(System.in);
 
     public Menu(){
 
@@ -21,7 +22,7 @@ public class Menu {
             System.out.println("1. Skapa konto");
             System.out.println("2. Administrera konto");
             System.out.println("3. Avsluta");
-            System.out.print("Ange menyval: ");
+            System.out.print("Ange menyval> ");
             menuChoice = scanner.nextInt();
 
             switch (menuChoice) {

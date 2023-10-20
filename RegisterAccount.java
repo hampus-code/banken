@@ -3,24 +3,24 @@ import java.util.Scanner;
 
 public class RegisterAccount {
 
-    int accountNumber;
-    int checkUserInputAccountNumber;
-    boolean accountExists;
-    boolean runSecondMenu;
-    Scanner scanner = new Scanner(System.in);
+    private int accountNumber;
+    private int checkUserInputAccountNumber;
+    private boolean accountExists;
+    private boolean runSecondMenu;
+    private Scanner scanner = new Scanner(System.in);
 
 
     ArrayList<BankAccount> accountList = new ArrayList<>();
     
-
     //Metod för att skapa konton
     public void createAccount(){
 
         
-        System.out.print("Ange kontonummer: ");
+        System.out.print("Ange kontonummer> ");
         int userInputAccountNumber = scanner.nextInt();
 
         accountExists = false;
+
         
          for (BankAccount checkAccount : accountList) { // Går igenom konton i listan
             if (userInputAccountNumber == checkAccount.getAccountNumber()) {
@@ -45,10 +45,11 @@ public class RegisterAccount {
      
         
     }
+    
     //Metod för att administrera konton
     public void administrateAccount(){
 
-        System.out.print("Ange kontonummer: ");
+        System.out.print("Ange kontonummer> ");
         checkUserInputAccountNumber = scanner.nextInt();
 
         runSecondMenu = true;
@@ -66,28 +67,28 @@ public class RegisterAccount {
                     System.out.println("2. Sätt in pengar");
                     System.out.println("3. Visa saldo");
                     System.out.println("4. Avsluta");
-                    System.out.print("Ange menyval: ");
+                    System.out.print("Ange menyval> ");
                     int secondMenuChoice = scanner.nextInt();
         
                     switch (secondMenuChoice) {
         
                         case 1: //Kallar på metod för att ta ut pengar
 
-                        System.out.print("Ange hur mycket du vill ta ut: ");
+                        System.out.print("Ange hur mycket du vill ta ut> ");
                         int userInputWithdraw = scanner.nextInt();
                         checkAccount.withdrawMoney(userInputWithdraw);
                         break;
                     
                         case 2: //Kallar på metod för att sätta in pengar
 
-                        System.out.print("Ange hur mycket du vill sätta in: ");
+                        System.out.print("Ange hur mycket du vill sätta in> ");
                         int userInputDeposit = scanner.nextInt();
                         checkAccount.depositMoney(userInputDeposit);
                         break;
 
-                        case 3:
+                        case 3: //Kallar på metod för att visa saldo
 
-                        checkAccount.displayAccountInfo(); //Kallar på metod för att visa saldo
+                        checkAccount.displayAccountInfo(); 
                         break;
         
                         case 4:
