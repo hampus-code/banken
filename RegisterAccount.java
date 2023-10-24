@@ -3,16 +3,12 @@ import java.util.Scanner;
 
 public class RegisterAccount {
 
-    private int accountNumber;
     private int checkUserInputAccountNumber;
     private boolean accountExists;
     private boolean runSecondMenu;
     private Scanner scanner = new Scanner(System.in);
-
-
-    ArrayList<BankAccount> accountList = new ArrayList<>();
+    private ArrayList<BankAccount> accountList = new ArrayList<>();
     
-    //Metod för att skapa konton
     public void createAccount(){
 
         
@@ -22,12 +18,13 @@ public class RegisterAccount {
         accountExists = false;
 
         
-         for (BankAccount checkAccount : accountList) { // Går igenom konton i listan
+         for (BankAccount checkAccount : accountList) {
             if (userInputAccountNumber == checkAccount.getAccountNumber()) {
                 accountExists = true;
                 break;
                 
             }
+            
             
          }
          //Ifall kontot inte finns så skapas det
@@ -36,17 +33,14 @@ public class RegisterAccount {
             System.out.println("Kontot skapades");
             accountExists = false;
          }
-         //Finns kontot redan så visas ett felmeddelande
             else{
             System.out.println("Kontot existerar redan");
             accountExists = false;
          }
-         
-     
         
     }
     
-    //Metod för att administrera konton
+    
     public void administrateAccount(){
 
         System.out.print("Ange kontonummer> ");
@@ -56,12 +50,12 @@ public class RegisterAccount {
         accountExists = false;
         
 
-         for (BankAccount checkAccount : accountList) { // Går igenom konton i listan
+         for (BankAccount checkAccount : accountList) {
             if (checkUserInputAccountNumber == checkAccount.getAccountNumber()) {
                 System.out.println("Kontot du har angett existerar, du får följande val: ");
                 accountExists = true;
 
-                do{ //Meny för konto
+                do{
                     System.out.println("****KONTOMENY**** - konto: " + checkUserInputAccountNumber);
                     System.out.println("1. Ta ut pengar");
                     System.out.println("2. Sätt in pengar");
@@ -72,21 +66,21 @@ public class RegisterAccount {
         
                     switch (secondMenuChoice) {
         
-                        case 1: //Kallar på metod för att ta ut pengar
+                        case 1:
 
                         System.out.print("Ange hur mycket du vill ta ut> ");
                         int userInputWithdraw = scanner.nextInt();
                         checkAccount.withdrawMoney(userInputWithdraw);
                         break;
                     
-                        case 2: //Kallar på metod för att sätta in pengar
+                        case 2:
 
                         System.out.print("Ange hur mycket du vill sätta in> ");
                         int userInputDeposit = scanner.nextInt();
                         checkAccount.depositMoney(userInputDeposit);
                         break;
 
-                        case 3: //Kallar på metod för att visa saldo
+                        case 3:
 
                         checkAccount.displayAccountInfo(); 
                         break;

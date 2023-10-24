@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private boolean runTheMenu = true;
+    private boolean runTheMenu;
     private int menuChoice;
 
     private RegisterAccount bankAccount = new RegisterAccount();
@@ -16,6 +16,8 @@ public class Menu {
 
 
     public void runMenu(){
+
+        runTheMenu = true;
 
         do{
             System.out.println("****HUVUDMENY****");
