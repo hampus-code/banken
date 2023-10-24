@@ -6,6 +6,7 @@ public class RegisterAccount {
     private int checkUserInputAccountNumber;
     private boolean accountExists;
     private boolean runSecondMenu;
+
     private Scanner scanner = new Scanner(System.in);
     private ArrayList<BankAccount> accountList = new ArrayList<>();
     
@@ -27,7 +28,7 @@ public class RegisterAccount {
             
             
          }
-         //Ifall kontot inte finns så skapas det
+         
          if (!accountExists){
             accountList.add(new BankAccount(userInputAccountNumber, 0));
             System.out.println("Kontot skapades");

@@ -41,7 +41,7 @@ public class Menu {
 
                 case 3:
 
-                System.out.println("Programmet avslutas");
+                System.out.println("Du lämnar nu banken, välkommen åter!");
                 runTheMenu = false;
                 break;
 
